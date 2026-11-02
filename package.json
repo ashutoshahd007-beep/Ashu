@@ -1,0 +1,14 @@
+{
+  "name": "family-grocery-list",
+  "version": "1.0.0",
+  "description": "A shared grocery list that updates live on every family member's device.",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

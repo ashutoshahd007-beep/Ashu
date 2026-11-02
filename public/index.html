@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2f7d4f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Groceries">
+  <title>Family Groceries</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- First-time setup -->
+  <section id="setup" class="card setup" hidden>
+    <h1>Family Groceries</h1>
+    <p class="muted">One shared list. When anyone changes it, everyone sees it right away.</p>
+    <form id="setup-form">
+      <label>Your name
+        <input id="setup-name" autocomplete="nickname" maxlength="40" required placeholder="e.g. Ashu">
+      </label>
+      <label id="code-label">Family code
+        <input id="setup-code" type="password" autocomplete="current-password" maxlength="100" placeholder="Ask whoever set this up">
+      </label>
+      <p id="setup-error" class="error" hidden></p>
+      <button type="submit" class="primary">Open the list</button>
+    </form>
+  </section>
+
+  <!-- Main app -->
+  <main id="app" hidden>
+    <header class="topbar">
+      <h1>Groceries</h1>
+      <span id="status" class="status" title="Connection">Connecting…</span>
+      <button id="who" class="ghost" title="Change your name"></button>
+    </header>
+
+    <form id="add-form" class="card add">
+      <input id="add-name" placeholder="Add an item…" maxlength="80" autocomplete="off" required>
+      <input id="add-qty" placeholder="Qty" maxlength="20" autocomplete="off" class="qty">
+      <select id="add-cat" aria-label="Category"></select>
+      <button type="submit" class="primary" aria-label="Add item">Add</button>
+    </form>
+
+    <p id="summary" class="muted summary"></p>
+    <div id="list"></div>
+
+    <section id="done-section" hidden>
+      <div class="done-head">
+        <h2>In the cart</h2>
+        <button id="clear-done" class="ghost danger">Clear</button>
+      </div>
+      <ul id="done-list" class="items"></ul>
+    </section>
+
+    <p id="empty" class="muted empty" hidden>The list is empty. Add something above.</p>
+  </main>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
